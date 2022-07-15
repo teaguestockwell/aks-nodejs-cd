@@ -1,0 +1,46 @@
+{
+  "name": "node-rest-boilerplate",
+  "version": "0.0.1",
+  "description": "A boilerplate for node.js REST API",
+  "license": "MIT",
+  "author": {
+    "name": "Teague Stockwell",
+    "email": "tsappdevelopment@gmail.com",
+    "url": "https://teaguestockwell.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/teaguestockwell/node-rest-boilerplate"
+  },
+  "scripts": {
+    "start": "node ./dist/server.js",
+    "lint": "eslint . --ext .ts",
+    "compile": "tsc --noEmit",
+    "build": "webpack",
+    "docker:build": "docker build -t node-rest .",
+    "docker:run": "docker run -p 3000:3000 -d node-rest"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.18.1",
+    "response-time": "^2.3.2"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.0.4",
+    "@types/response-time": "^2.3.5",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "eslint": "^8.19.0",
+    "husky": "^8.0.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-organize-imports": "^3.0.0",
+    "pretty-quick": "^3.1.3",
+    "terser-webpack-plugin": "^5.3.3",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
