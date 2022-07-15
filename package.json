@@ -15,6 +15,7 @@
   "scripts": {
     "start": "node ./dist/server.js",
     "lint": "eslint . --ext .ts",
+    "test": "echo noop",
     "compile": "tsc --noEmit",
     "build": "webpack",
     "docker:build": "docker build -t node-rest .",
