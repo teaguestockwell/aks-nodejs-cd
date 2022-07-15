@@ -9,7 +9,6 @@ FROM node:16.16.0 as build
 ENV NODE_ENV production
 WORKDIR /app
 COPY --from=deps /app .
-COPY ./package.json .
 COPY ./src ./src
 COPY ./webpack.config.js .
 COPY ./tsconfig.json .
