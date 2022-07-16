@@ -13,5 +13,7 @@ spec:
             paths:
             - path: /
               backend:
-                serviceName: "buildablekc0-13ef"
-                servicePort: 3000
+                service:
+                  name: "buildablekc0-13ef"
+                  port:
+                    number: 3000
