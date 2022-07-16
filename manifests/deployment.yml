@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "buildablekc0-13ef"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "buildablekc0-13ef"
+  template:
+    metadata:
+      labels:
+        app: "buildablekc0-13ef"
+    spec:
+      containers:
+        - name: "buildablekc0-13ef"
+          image: "buildablecr0.azurecr.io/buildablekc0"
+          ports:
+          - containerPort: 3000
