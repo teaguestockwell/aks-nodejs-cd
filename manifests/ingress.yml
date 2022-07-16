@@ -11,7 +11,8 @@ spec:
         - host: buildablekc0b119-buildablekc0-13ef.6857f2b11c5a4bfbb931.eastus.aksapp.io
           http:
             paths:
-            - path: /
+            - pathType: Prefix
+              path: /
               backend:
                 service:
                   name: "buildablekc0-13ef"
