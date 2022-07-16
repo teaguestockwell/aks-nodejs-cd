@@ -46,7 +46,7 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-            docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/rest-boiler:${{ github.sha }}
+            docker build . -f dockerfile.ci -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/rest-boiler:${{ github.sha }}
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/rest-boiler:${{ github.sha }}
       
       - name: Deploy image to aks
