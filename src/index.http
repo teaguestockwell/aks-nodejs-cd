@@ -1,0 +1,11 @@
+GET http://localhost:3000
+###
+GET http://localhost:3000/get-sig
+###
+GET http://localhost:3000/protected
+###
+GET https://buildablekc0b119-buildablekc0-13ef.6857f2b11c5a4bfbb931.eastus.aksapp.io
+###
+GET https://buildablekc0b119-buildablekc0-13ef.6857f2b11c5a4bfbb931.eastus.aksapp.io/get-sig
+###
+GET https://buildablekc0b119-buildablekc0-13ef.6857f2b11c5a4bfbb931.eastus.aksapp.io/protected
