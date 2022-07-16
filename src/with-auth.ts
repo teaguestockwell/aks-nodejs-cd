@@ -14,7 +14,9 @@ export const withAuth = (req: Request, res: Response, next: NextFunction) => {
     (req as any).tok = verify(tok, secret!);
     next();
     return;
-  } catch {}
+  } catch {
+    // noop
+  }
 
   return res.status(403).send({ error: "invalid authorization token" });
 };
