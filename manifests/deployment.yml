@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: "buildablekc0-13ef"
-          image: "buildablecr0.azurecr.io/buildablekc0"
+          image: "buildablecr0.azurecr.io/node-boilerplate"
           ports:
           - containerPort: 3000

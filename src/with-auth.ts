@@ -7,7 +7,7 @@ export const withAuth = (req: Request, res: Response, next: NextFunction) => {
   const tok = req.headers["authorization"];
 
   if (!tok || typeof tok !== "string") {
-    return res.status(401).send({ error: "authorization header required" });
+    return res.status(401).json({ error: "authorization header required" });
   }
 
   try {
@@ -18,7 +18,7 @@ export const withAuth = (req: Request, res: Response, next: NextFunction) => {
     // noop
   }
 
-  return res.status(403).send({ error: "invalid authorization token" });
+  return res.status(403).json({ error: "invalid authorization token" });
 };
 
 export const issueSig = (meta: any) => {
