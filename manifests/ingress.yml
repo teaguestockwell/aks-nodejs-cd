@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+    name: "buildablekc0-13ef"
+    labels:
+        app: "buildablekc0-13ef"
+    annotations:
+        kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+    rules:
+        - host: buildablekc0b119-buildablekc0-13ef.6857f2b11c5a4bfbb931.eastus.aksapp.io
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: "buildablekc0-13ef"
+                servicePort: 3000
