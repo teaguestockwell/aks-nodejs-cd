@@ -33,3 +33,51 @@ jobs:
 
       - name: Build
         run: yarn build
+
+      - name: Login via Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Build image and push to registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+      - run: |
+            docker build . -f dockerfile.ci -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/rest-boiler:${{ github.sha }}
+            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/rest-boiler:${{ github.sha }}
+      
+      - uses: azure/k8s-set-context@v1
+        with:
+          kubeconfig: ${{ secrets.aks_buildablekc0_kubeConfig }}
+        id: login
+      
+      - name: Create namespace
+        run: |
+          namespacePresent=`kubectl get namespace | grep buildablekc0b119 | wc -l`
+          if [ $namespacePresent -eq 0 ]
+          then
+              echo `kubectl create namespace buildablekc0b119`
+          fi
+
+      - uses: azure/k8s-create-secret@v1
+        with:
+          namespace: buildablekc0b119
+          container-registry-url: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
+          container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+          secret-name: buildablekc0dockerauth
+        
+      - uses: azure/k8s-deploy@v1.2
+        with:
+          namespace: buildablekc0b119
+          manifests: |
+            manifests/deployment.yml
+            manifests/service.yml
+            manifests/ingress.yml
+          images: |
+            ${{ secrets.REGISTRY_LOGIN_SERVER }}/rest-boiler:${{ github.sha }}
+          imagepullsecrets: |
+            buildablekc0dockerauth
