@@ -1,11 +1,11 @@
-name: CI
+name: CD
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   build:
-    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
+    name: Lint, test, compile, build, containerize and deploy
 
     runs-on: ${{ matrix.os }}
     strategy:
