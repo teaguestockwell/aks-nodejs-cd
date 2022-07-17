@@ -23,5 +23,5 @@ app.get("/get-sig", (_req, res) => {
   res.status(200).json(issueSig({ msg: 'hi mom'}));
 });
 
-app.listen(process.env.PORT);
+export const server = app.listen(process.env.PORT);
 export default app;
