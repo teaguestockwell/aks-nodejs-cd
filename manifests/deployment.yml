@@ -18,8 +18,8 @@ spec:
           ports:
           - containerPort: 3000
           env:
-          - name: "secret"
+          - name: secret
             valueFrom:
               secretKeyRef:
-                name: "secret"
-                key: "secret"
+                name: mysecrets
+                key: secret.txt
