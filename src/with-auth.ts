@@ -1,7 +1,15 @@
 import { NextFunction, Request, Response } from "express";
 import { sign, verify } from "jsonwebtoken";
 
-const { secret } = process.env;
+const secret = (() => {
+  const res = process.env.secret
+  if (!res) {
+    // eslint-disable-next-line no-console
+    console.warn('"secret" found in env, using the default value: "secret"')
+    return 'secret'
+  }
+  return Buffer.from(res, 'base64').toString('ascii')
+})()
 
 export const withAuth = (req: Request, res: Response, next: NextFunction) => {
   const tok = req.headers["authorization"];
@@ -11,16 +19,18 @@ export const withAuth = (req: Request, res: Response, next: NextFunction) => {
   }
 
   try {
-    (req as any).tok = verify(tok, secret!);
+    (req as any).tok = verify(tok, secret);
     next();
     return;
-  } catch {}
+  } catch {
+    // 
+  }
 
   return res.status(403).json({ error: "invalid authorization token" });
 };
 
 export const issueSig = (meta: any) => {
-  return sign(meta, secret!, {
+  return sign(meta, secret, {
     expiresIn: 60 * 60 * 24 * 7,
   });
 };

@@ -17,3 +17,9 @@ spec:
           image: "buildablecr0.azurecr.io/node-boilerplate"
           ports:
           - containerPort: 3000
+          env:
+          - name: "secret"
+            valueFrom:
+              secretKeyRef:
+                name: "secret"
+                key: "secret"

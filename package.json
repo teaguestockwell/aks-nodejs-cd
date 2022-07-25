@@ -19,7 +19,7 @@
     "compile": "tsc --noEmit",
     "build": "webpack",
     "docker:build": "docker build -t node-rest .",
-    "docker:run": "docker run -e secret=secret -it -p 3000:3000 node-rest",
+    "docker:run": "docker run -e secret=c2VjcmV0 -it -p 3000:3000 node-rest",
     "docker:start": "yarn docker:build && yarn docker:run",
     "bench": "chmod +x ./src/index.bench.sh && ./src/index.bench.sh"
   },
