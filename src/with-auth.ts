@@ -8,7 +8,7 @@ const secret = (() => {
     console.warn('"secret" found in env, using the default value: "secret"')
     return 'secret'
   }
-  return Buffer.from(res, 'base64').toString('ascii')
+  return res
 })()
 
 export const withAuth = (req: Request, res: Response, next: NextFunction) => {

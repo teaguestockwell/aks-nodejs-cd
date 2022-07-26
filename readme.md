@@ -8,3 +8,16 @@
 1. echo -n '[secretValueHere]' > [secretKey].txt
 1. kubectl create secret generic [secretName] --from-file=[secretKey].txt --namespace=buildablekc0b119
 1. kubectl get secret mysecrets --namespace=buildablekc0b119 -o jsonpath='{.data}'
+1. add the secret to deployment.yml
+```sh
+ - name: "buildablekc0-13ef"
+          image: "buildablecr0.azurecr.io/node-boilerplate"
+          ports:
+          - containerPort: 3000
+          env:
+          - name: secret
+            valueFrom:
+              secretKeyRef:
+                name: mysecrets
+                key: secret.txt
+```
