@@ -77,8 +77,11 @@ jobs:
         with:
           namespace: buildablekc0b119
           manifests: |
+            k8/cert-manager.yml
+            k8/certificate.yml
             k8/deployment.yml
             k8/ingress.yml
+            k8/issuer.yml
             k8/service.yml
           images: |
             ${{ secrets.REGISTRY_LOGIN_SERVER }}/node-boilerplate:${{ github.sha }}
