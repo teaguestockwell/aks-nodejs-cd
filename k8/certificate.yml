@@ -2,7 +2,6 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: node-boilderplate
-  namespace: default
 spec:
   dnsNames:
     - buildablekc0b119-buildablekc0-13ef.6857f2b11c5a4bfbb931.eastus.aksapp.io
