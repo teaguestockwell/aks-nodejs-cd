@@ -76,7 +76,10 @@ jobs:
       - uses: azure/k8s-deploy@v1.2
         with:
           namespace: buildablekc0b119
-          manifests: dir/k8
+          manifests: |
+            'k8/deployment.yml'
+            'k8/ingress.yml'
+            'k8/service.yml'
           images: |
             ${{ secrets.REGISTRY_LOGIN_SERVER }}/node-boilerplate:${{ github.sha }}
           imagepullsecrets: |
