@@ -10,7 +10,7 @@
 1. kubectl get secret mysecrets --namespace=buildablekc0b119 -o jsonpath='{.data}'
 1. add the secret to deployment.yml
 ```sh
- - name: "buildablekc0-13ef"
+ - name: "scraper"
           image: "buildablecr0.azurecr.io/node-boilerplate"
           ports:
           - containerPort: 3000
@@ -21,3 +21,7 @@
                 name: mysecrets
                 key: secret.txt
 ```
+# create a public ip in the aks cluster resource group
+az network public-ip create --resource-group buildablekc0_group --name buildablekc0_ip --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
+
+20.228.201.62

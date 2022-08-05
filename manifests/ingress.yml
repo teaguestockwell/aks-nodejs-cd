@@ -1,9 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-    name: "buildablekc0-13ef"
+    name: node-boilderplate
     labels:
-        app: "buildablekc0-13ef"
+        app: node-boilderplate
     annotations:
         kubernetes.io/ingress.class: addon-http-application-routing
 spec:
@@ -15,6 +15,6 @@ spec:
               path: /
               backend:
                 service:
-                  name: "buildablekc0-13ef"
+                  name: node-boilderplate
                   port:
                     number: 3000
