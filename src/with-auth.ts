@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { sign, verify } from "jsonwebtoken";
 
 const secret = (() => {
-  const res = process.env.secret
+  const res = process.env.jwt
   if (!res) {
     // eslint-disable-next-line no-console
     console.warn('"secret" found in env, using the default value: "secret"')

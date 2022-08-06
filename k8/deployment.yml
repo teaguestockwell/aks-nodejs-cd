@@ -18,8 +18,8 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: secret
+            - name: jwt
               valueFrom:
                 secretKeyRef:
-                  name: jwt
-                  key: secret
+                  name: secrets
+                  key: jwt

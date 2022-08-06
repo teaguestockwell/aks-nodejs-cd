@@ -64,8 +64,8 @@ jobs:
         with:
           namespace: 'default'
           secret-type: 'generic'
-          secret-name: jwt
-          string-data: ${{ secrets.JWT }}
+          secret-name: secrets
+          string-data: ${{ secrets.SECRETS }}
   
       - uses: azure/k8s-deploy@v1.2
         with:
