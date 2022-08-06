@@ -1,5 +1,6 @@
 1. create a new container registry in azure
 1. create aks cluster ![config](./public/aks.png)
+1. create a new github action secret named "AZURE_CREDENTIALS" with the json from `az ad sp create-for-rbac --name "myApp"`
 1. configure actions secrets deploy to the cluster
 ![1](./public/aks-1.png)
 ![2](./public/aks-2.png)
