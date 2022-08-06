@@ -22,8 +22,10 @@
 
 # https Ingress (wip)
 
-- apply cert-manager to the cluster `kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.crds.yaml`
-- apply nginx-ingress chart to k8s cluster `helm install ingress-nginx ingress-nginx/ingress-nginx`
+- `helm repo add cert-manager https://charts.jetstack.io`
+- `helm install my-cert-manager cert-manager/cert-manager`
+- `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
+- `helm install nginx-ingress ingress-nginx/ingress-nginx`
 - apply cert manger deps to the cluster `kubectl apply -f k8/issuer.yml && kubectl apply -f k8/certificate.yml && kubectl apply -f k8/ingress.yml`
 - create an a record for the ip address of the ingress controller ![dns](./public/dns.png)
 - grep `node-boiler.teaguestockwell.com` and replace it with the the host you assigned to the a record

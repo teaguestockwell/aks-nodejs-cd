@@ -1,11 +1,11 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: node-boilerplate
+  name: node-boiler.teaguestockwell.com
 spec:
   dnsNames:
     - node-boiler.teaguestockwell.com
-  secretName: example-app-tls
+  secretName: node-boiler.teaguestockwell.com
   issuerRef:
     name: letsencrypt-cluster-issuer
     kind: ClusterIssuer
