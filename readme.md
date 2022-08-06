@@ -1,15 +1,10 @@
-1. create a new container registry in azure
-1. create aks cluster ![config](./public/aks.png)
-1. create a new github action secret named "AZURE_CREDENTIALS" with the json from `az ad sp create-for-rbac --name "myApp"`
-1. configure actions secrets deploy to the cluster
-![1](./public/aks-1.png)
-![2](./public/aks-2.png)
-you may edit this to use dockerfile.ci later
-![3](./public/aks-3.png)
-select the default namespace, and the container registry you created
-![4](./public/aks-4.png)
-1. git pull origin
-
+1. create a container registry in azure
+1. create an aks cluster with this config ![config](./public/aks.png)
+1. create a github action secret named `REGISTRY_LOGIN_SERVER` with the value of the registry login server
+1. create a github action secret named `REGISTRY_USERNAME` with the value of the registry username
+1. create a github action secret named `REGISTRY_PASSWORD` with the value of the registry password
+1. create github action secret named `AZURE_CREDENTIALS` with the json from `az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} --sdk-auth`
+1. create github action secret named `KUBE_CONFIG` with the yml from `az aks get-credentials --resource-group k8s-demo-ss --name k8s-demo-cluster-ss --file kubeconfig-ss`
 # creating a secret
 1. az login
 1. open azure portal, select aks cluster, click connect and run commands
