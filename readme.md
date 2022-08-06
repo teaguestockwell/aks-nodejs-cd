@@ -25,3 +25,10 @@
 az network public-ip create --resource-group buildablekc0_group --name buildablekc0_ip --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 
 20.228.201.62
+
+# HTTPS Ingress (wip)
+- apply cert-manager to the cluster `kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.crds.yaml`
+- apply nginx-ingress chart to k8s cluster `helm install ingress-nginx ingress-nginx/ingress-nginx` 
+- create a new a record in the dns for the public ip of the nginx ingress
+- add the host name of that record to `k8/ingress.yml` and `k8/certificate.yml`
+- bump the pipeline / manually redeploy as needed
