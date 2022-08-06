@@ -21,10 +21,8 @@
                 name: mysecrets
                 key: secret.txt
 ```
-# create a public ip in the aks cluster resource group
-az network public-ip create --resource-group buildablekc0_group --name buildablekc0_ip --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
-
-20.228.201.62
+# Get https cert status
+- kubectl describe certificate node-boilderplate
 
 # HTTPS Ingress (wip)
 - apply cert-manager to the cluster `kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.crds.yaml`
