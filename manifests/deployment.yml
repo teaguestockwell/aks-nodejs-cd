@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "buildableaks1-ebcc"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "buildableaks1-ebcc"
+  template:
+    metadata:
+      labels:
+        app: "buildableaks1-ebcc"
+    spec:
+      containers:
+        - name: "buildableaks1-ebcc"
+          image: "buildablecr0.azurecr.io/buildableaks1"
+          ports:
+          - containerPort: 3000
