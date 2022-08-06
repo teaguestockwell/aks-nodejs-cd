@@ -4,7 +4,7 @@ metadata:
   name: node-boilderplate
 spec:
   dnsNames:
-    - buildablekc0-dns-b5a7f158.hcp.eastus.azmk8s.io
+    - node-boiler.teaguestockwell.com
   secretName: example-app-tls
   issuerRef:
     name: letsencrypt-cluster-issuer
