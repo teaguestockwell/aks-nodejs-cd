@@ -52,7 +52,7 @@ jobs:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
         id: login
 
-      - uses: azure/k8s-create-secret@v2
+      - uses: azure/k8s-create-secret@v4
         with:
           namespace: default
           container-registry-url: ${{ secrets.REGISTRY_LOGIN_SERVER }}
@@ -60,7 +60,7 @@ jobs:
           container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
           secret-name: acr
       
-      - uses: azure/k8s-create-secret@v2
+      - uses: azure/k8s-create-secret@v4
         with:
           namespace: 'default'
           secret-type: 'generic'
