@@ -52,7 +52,7 @@ jobs:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
         id: login
 
-      - uses: azure/k8s-create-secret@v1
+      - uses: azure/k8s-create-secret@v2
         with:
           namespace: default
           container-registry-url: ${{ secrets.REGISTRY_LOGIN_SERVER }}
@@ -65,7 +65,7 @@ jobs:
           namespace: 'default'
           secret-type: 'generic'
           secret-name: jwt
-          secret: ${{ secrets.JWT }}
+          string-data: ${{ secrets.JWT }}
   
       - uses: azure/k8s-deploy@v1.2
         with:
