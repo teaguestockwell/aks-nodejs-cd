@@ -1,6 +1,13 @@
 1. create a new container registry in azure
-1. create aks cluster https://docs.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli
-1. configure actions to deploy to the cluster https://azure.github.io/kube-labs/1-github-actions.html#objective-of-the-lab
+1. create aks cluster ![config](./public/aks.png)
+1. configure actions secrets deploy to the cluster
+![1](./public/aks-1.png)
+![2](./public/aks-2.png)
+you may edit this to use dockerfile.ci later
+![3](./public/aks-3.png)
+select the default namespace, and the container registry you created
+![4](./public/aks-4.png)
+1. git pull origin
 
 # creating a secret
 1. az login
