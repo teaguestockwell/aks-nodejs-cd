@@ -5,16 +5,8 @@
 1. create a github action secret named `REGISTRY_LOGIN_SERVER` with the value of the registry login server
 1. create a github action secret named `REGISTRY_USERNAME` with the value of the registry username
 1. create a github action secret named `REGISTRY_PASSWORD` with the value of the registry password
-1. create github action secret named `KUBE_CONFIG` with the yml from `az aks get-credentials --resource-group k8s-demo-ss --name k8s-demo-cluster-ss --file kubeconfig-ss`
-
-# create cluster secret that is used to verify req.headers.authorization - todo add this to action
-
-1. install az cli
-1. az login
-1. open azure portal, select aks cluster, click connect and run commands
-1. echo -n some-secret > secret.txt
-1. kubectl create secret generic mysecret --from-file=secret.txt
-1. kubectl get secret mysecret -o jsonpath='{.data}'
+1. create a github action secret named `JWT` with the value of the secret used to verify req.headers.authorization
+1. create github action secret named `KUBE_CONFIG` with the yml from `az aks get-credentials --resource-group k8s-demo-ss --name k8s-demo-cluster-ss --file secret.kubeconfig`
 
 # get https cert status
 

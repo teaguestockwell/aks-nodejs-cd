@@ -21,5 +21,5 @@ spec:
             - name: secret
               valueFrom:
                 secretKeyRef:
-                  name: mysecret
-                  key: secret.txt
+                  name: jwt
+                  key: secret

@@ -59,7 +59,14 @@ jobs:
           container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
           container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
           secret-name: acr
-        
+      
+      - uses: azure/k8s-create-secret@v2
+        with:
+          namespace: 'default'
+          secret-type: 'generic'
+          secret-name: jwt
+          secret: ${{ secrets.JWT }}
+  
       - uses: azure/k8s-deploy@v1.2
         with:
           namespace: default
