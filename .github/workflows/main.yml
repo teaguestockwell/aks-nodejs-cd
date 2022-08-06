@@ -59,23 +59,23 @@ jobs:
       
       - name: Create namespace
         run: |
-          namespacePresent=`kubectl get namespace | grep buildablekc0b119 | wc -l`
+          namespacePresent=`kubectl get namespace | grep default | wc -l`
           if [ $namespacePresent -eq 0 ]
           then
-              echo `kubectl create namespace buildablekc0b119`
+              echo `kubectl create namespace default`
           fi
 
       - uses: azure/k8s-create-secret@v1
         with:
-          namespace: buildablekc0b119
+          namespace: default
           container-registry-url: ${{ secrets.REGISTRY_LOGIN_SERVER }}
           container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
           container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-          secret-name: buildablekc0dockerauth
+          secret-name: acr
         
       - uses: azure/k8s-deploy@v1.2
         with:
-          namespace: buildablekc0b119
+          namespace: default
           manifests: |
             k8/certificate.yml
             k8/deployment.yml
@@ -85,4 +85,4 @@ jobs:
           images: |
             ${{ secrets.REGISTRY_LOGIN_SERVER }}/node-boilerplate:${{ github.sha }}
           imagepullsecrets: |
-            buildablekc0dockerauth
+            acr
