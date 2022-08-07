@@ -40,12 +40,12 @@ jobs:
       - name: Build image and push to registry
         uses: azure/docker-login@v1
         with:
-          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          login-server: buildablecr0.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-            docker build . -f dockerfile.ci -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/node-boilerplate:${{ github.sha }}
-            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/node-boilerplate:${{ github.sha }}
+            docker build . -f dockerfile.ci -t buildablecr0.azurecr.io/node-boilerplate:${{ github.sha }}
+            docker push buildablecr0.azurecr.io/node-boilerplate:${{ github.sha }}
       
       - uses: azure/k8s-set-context@v1
         with:
@@ -55,7 +55,7 @@ jobs:
       - uses: azure/k8s-create-secret@v4
         with:
           namespace: default
-          container-registry-url: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          container-registry-url: buildablecr0.azurecr.io
           container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
           container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
           secret-name: acr
@@ -74,6 +74,6 @@ jobs:
             k8/deployment.yml
             k8/service.yml
           images: |
-            ${{ secrets.REGISTRY_LOGIN_SERVER }}/node-boilerplate:${{ github.sha }}
+            buildablecr0.azurecr.io/node-boilerplate:${{ github.sha }}
           imagepullsecrets: |
             acr

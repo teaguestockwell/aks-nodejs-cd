@@ -1,7 +1,8 @@
 # setup env for CD
 1. create a container registry in azure
+1. grep `buildablecr0.azurecr.io` and replace it with your login container registry login
+1. grep `node-boilerplate` and replace it with a name for your project
 1. create an aks cluster with this config ![config](./public/aks.png)
-1. create a github action secret named `REGISTRY_LOGIN_SERVER` with the value of the registry login server
 1. create a github action secret named `REGISTRY_USERNAME` with the value of the registry username
 1. create a github action secret named `REGISTRY_PASSWORD` with the value of the registry password
 1. create a github action secret named `SECRETS` with the value of `{"jwt": "abc123"}` secret used to verify req.headers.authorization
