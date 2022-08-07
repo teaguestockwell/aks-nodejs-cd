@@ -1,14 +1,14 @@
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
-  name: letsencrypt-staging
+  name: letsencrypt-prod
 spec:
   acme:
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
-    # server: https://acme-v02.api.letsencrypt.org/directory
+    # server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     email: tsappdevelopment@gmail.com
     privateKeySecretRef:
-      name: issuer-letsencrypt-staging
+      name: letsencrypt-prod
     solvers:
     - http01:
         ingress:
