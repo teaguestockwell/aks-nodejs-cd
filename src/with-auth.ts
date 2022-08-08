@@ -5,7 +5,7 @@ const secret = (() => {
   const res = process.env.jwt
   if (!res) {
     // eslint-disable-next-line no-console
-    console.warn('"secret" found in env, using the default value: "secret"')
+    console.warn('"jwt" was not found in the env, using the default value: "secret"')
     return 'secret'
   }
   return res

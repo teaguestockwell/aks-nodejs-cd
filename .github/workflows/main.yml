@@ -59,7 +59,8 @@ jobs:
           container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
           container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
           secret-name: acr
-      
+
+      # Note: If a container already consumes a Secret in an environment variable, a Secret update will not be seen by the container unless it is restarted. https://kubernetes.io/docs/concepts/configuration/secret/#consuming-secret-values-from-environment-variables
       - uses: azure/k8s-create-secret@v4
         with:
           namespace: 'default'
